@@ -33,10 +33,9 @@ class RentTestCase(TestCase):
 
     def test_error_rent(self):
         rent_type = self.rent_types[0]
-        rent = Rent.objects.create(
-            rent_type=rent_type,
-            user=self.user,
-            quantity=6
-        )
-
-        self.assertFalse(rent.price, rent_type.price * 6 * .7)
+        with self.assertRaises(ValueError):
+            rent = Rent.objects.create(
+                rent_type=rent_type,
+                user=self.user,
+                quantity=6
+            )

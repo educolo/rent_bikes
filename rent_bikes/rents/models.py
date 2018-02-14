@@ -25,7 +25,7 @@ class Rent(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         if self.quantity > 5:
-            return
+            raise ValueError('Quantity can\'t be greather than 5.')
 
         self.price = self.rent_type.price * self.quantity
 
