@@ -1,0 +1,5 @@
+[run]
+include = rent_bikes/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
