@@ -1,5 +1,5 @@
-rent_bikes
-==========
+Rent bikes Project
+==================
 
 A bike rent platform
 
@@ -57,17 +57,55 @@ Moved to `Live reloading and SASS compilation`_.
 
 
 
+Dev Deployment with Docker
+--------------------------
+
+Build the Stack
+^^^^^^^^^^^^^^^
+
+This can take a while, especially the first time you run this particular command
+on your development system::
+
+    $ docker-compose -f local.yml build
+
+If you want to build the production environment you use ``production.yml`` as -f argument (``docker-compose.yml`` or ``docker-compose.yaml`` are the defaults).
+
+Boot the System
+^^^^^^^^^^^^^^^
+
+This brings up both Django and PostgreSQL.
+
+The first time it is run it might take a while to get started, but subsequent
+runs will occur quickly.
+
+Open a terminal at the project root and run the following for local development::
+
+    $ docker-compose -f local.yml up
+
+You can also set the environment variable ``COMPOSE_FILE`` pointing to ``local.yml`` like this::
+
+    $ export COMPOSE_FILE=local.yml
+
+And then run::
+
+    $ docker-compose up
+
+Running management commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As with any shell command that we wish to run in our container, this is done
+using the ``docker-compose -f local.yml run`` command.
+
+To migrate your app and to create a superuser, run::
+
+    $ docker-compose -f local.yml run django python manage.py migrate
+    $ docker-compose -f local.yml run django python manage.py createsuperuser
+
+Here we specify the ``django`` container as the location to run our management commands.
 
 
-Deployment
-----------
-
-The following details how to deploy this application.
-
-
-
-Docker
-^^^^^^
+Docker details
+^^^^^^^^^^^^^^
 
 See detailed `cookiecutter-django Docker documentation`_.
 
