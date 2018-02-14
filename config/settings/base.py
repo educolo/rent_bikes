@@ -56,6 +56,7 @@ LOCAL_APPS = [
     # custom users app
     'rent_bikes.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'rent_bikes.rents.apps.RentsConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
